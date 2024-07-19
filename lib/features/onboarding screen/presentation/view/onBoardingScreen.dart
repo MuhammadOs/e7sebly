@@ -13,14 +13,13 @@ class OnboardingScreens extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreens> {
   late PageController _controller;
   var nameController = TextEditingController();
+  int _currentPage = 0;
 
   @override
   void initState() {
     _controller = PageController();
     super.initState();
   }
-
-  int _currentPage = 0;
 
   AnimatedContainer _buildDots({int? index}) {
     return AnimatedContainer(
@@ -30,17 +29,17 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
         color: _currentPage == index ? const Color(0XFF3788FF) : const Color(0XFFAFD0FF),
       ),
       margin: const EdgeInsets.only(right: 5),
-      height: SizeConfig.blockV! * 0.8, // Adjusted height
-      width: _currentPage == index ? SizeConfig.blockH! * 4.5 : SizeConfig.blockH! * 1.5, // Adjusted width
+      height: 13,
+      width: _currentPage == index ? MediaQuery.of(context).size.width * 0.1 : MediaQuery.of(context).size.width * 0.03,
       curve: Curves.easeIn,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    double width = SizeConfig.screenW!;
-    double height = SizeConfig.screenH!;
+    final screenSize = MediaQuery.of(context).size;
+    final double width = screenSize.width;
+    final double height = screenSize.height;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -55,7 +54,7 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
           child: Column(
             children: [
               Expanded(
-                flex: 5,
+                flex: 7,
                 child: PageView.builder(
                   itemCount: contents.length,
                   physics: const BouncingScrollPhysics(),
@@ -64,16 +63,19 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: SizeConfig.blockH! * 5, // Adjusted padding
-                        vertical: SizeConfig.blockV! * 3,
+                        horizontal: width * 0.05, // Adjusted padding
+                        vertical: height * 0.02,
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Image.asset(
-                            contents[index].image,
-                            height: SizeConfig.blockV! * 45,
+                          Expanded(
+                            child: Image.asset(
+                              contents[index].image,
+                              fit: BoxFit.contain,
+                            ),
                           ),
+                          SizedBox(height: height * 0.03),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(
@@ -81,8 +83,8 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                                   (int index) => _buildDots(index: index),
                             ),
                           ),
+                          SizedBox(height: height * 0.04), // Space between image and text
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
                                 contents[index].title,
@@ -90,16 +92,16 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                                 style: TextStyle(
                                   color: darkText,
                                   fontFamily: "mess_bold",
-                                  fontSize: (width <= 550) ? 25 : 20,
+                                  fontSize: width <= 550 ? 20 : 25,
                                 ),
                               ),
-                              const SizedBox(height: 10),
+                              SizedBox(height: height * 0.01),
                               Text(
                                 contents[index].desc,
                                 style: TextStyle(
                                   fontFamily: "mess_medium",
                                   fontWeight: FontWeight.w300,
-                                  fontSize: (width <= 550) ? 16 : 20,
+                                  fontSize: width <= 550 ? 16 : 20,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -112,12 +114,13 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                 ),
               ),
               Expanded(
+                flex: 2,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _currentPage + 1 == contents.length
                         ? Padding(
-                      padding: EdgeInsets.all(SizeConfig.blockH! * 7),
+                      padding: EdgeInsets.all(width * 0.05),
                       child: ElevatedButton(
                         onPressed: () {
                           showModalBottomSheet<dynamic>(
@@ -125,7 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                             backgroundColor: Colors.transparent,
                             context: context,
                             builder: (context) => Container(
-                              height: MediaQuery.of(context).size.height,
+                              height: height * 0.4,
                               decoration: const BoxDecoration(
                                 color: Color(0XFF1D6BDD),
                                 borderRadius: BorderRadius.only(
@@ -134,11 +137,9 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.only(
-                                  left: SizeConfig.blockH! * 8,
-                                  right: SizeConfig.blockH! * 8,
-                                  bottom: SizeConfig.blockV! * 10,
-                                  top: SizeConfig.blockV! * 14,
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: width * 0.05,
+                                  vertical: height * 0.05,
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -149,52 +150,37 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: "mess_semibold",
-                                        fontSize: (width <= 550) ? 25 : 30,
+                                        fontSize: width <= 550 ? 25 : 30,
                                       ),
                                     ),
                                     Expanded(
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Stack(
-                                            alignment: Alignment.centerLeft,
-                                            children: [
-                                              TextField(
-                                                style: const TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.white,
-                                                  fontFamily: "mess_semibold",
-                                                ),
-                                                textAlign: TextAlign.end,
-                                                controller: nameController,
-                                                keyboardType: TextInputType.text,
-                                                decoration: InputDecoration(
-                                                  hintText: 'من فضلك اكتب اسمك',
-                                                  hintStyle: const TextStyle(
-                                                    fontSize: 16,
-                                                    color: Colors.white,
-                                                    fontFamily: "mess_semibold",
-                                                  ),
-                                                  border: OutlineInputBorder(
-                                                    borderRadius: BorderRadius.circular(50),
-                                                    borderSide: const BorderSide(
-                                                      width: 0,
-                                                      style: BorderStyle.none,
-                                                    ),
-                                                  ),
-                                                  filled: true,
-                                                  contentPadding: const EdgeInsets.all(16),
-                                                  fillColor: const Color(0XFF2585EC),
-                                                ),
-                                              ),
-                                              Image.asset(
-                                                "assets/img/icons/slideup.png",
-                                                height: 180,
-                                              ),
-                                            ],
+                                      child: TextField(
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontFamily: "mess_semibold",
+                                        ),
+                                        textAlign: TextAlign.end,
+                                        controller: nameController,
+                                        keyboardType: TextInputType.text,
+                                        decoration: InputDecoration(
+                                          hintText: 'من فضلك اكتب اسمك',
+                                          hintStyle: const TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                            fontFamily: "mess_semibold",
                                           ),
-                                        ],
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(50),
+                                            borderSide: const BorderSide(
+                                              width: 0,
+                                              style: BorderStyle.none,
+                                            ),
+                                          ),
+                                          filled: true,
+                                          contentPadding: const EdgeInsets.all(16),
+                                          fillColor: const Color(0XFF2585EC),
+                                        ),
                                       ),
                                     ),
                                     ElevatedButton(
@@ -206,11 +192,11 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                                         shape: const CircleBorder(),
                                         elevation: 0,
                                         padding: EdgeInsets.symmetric(
-                                          horizontal: SizeConfig.blockH! * 6,
-                                          vertical: SizeConfig.blockV! * 2.5,
+                                          horizontal: width * 0.06,
+                                          vertical: height * 0.03,
                                         ),
                                         textStyle: TextStyle(
-                                          fontSize: (width <= 550) ? 13 : 17,
+                                          fontSize: width <= 550 ? 13 : 17,
                                         ),
                                       ),
                                       child: const Icon(
@@ -232,11 +218,11 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                             borderRadius: BorderRadius.circular(50),
                           ),
                           padding: EdgeInsets.symmetric(
-                            horizontal: SizeConfig.blockH! * 11,
-                            vertical: SizeConfig.blockV! * 2.5,
+                            horizontal: width * 0.1,
+                            vertical: height * 0.03,
                           ),
                           textStyle: TextStyle(
-                            fontSize: (width <= 550) ? 15 : 17,
+                            fontSize: width <= 550 ? 15 : 17,
                           ),
                         ),
                         child: const Text(
@@ -249,7 +235,7 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                       ),
                     )
                         : Padding(
-                      padding: EdgeInsets.all(SizeConfig.blockH! * 7),
+                      padding: EdgeInsets.all(width * 0.05),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -261,7 +247,7 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                               elevation: 0,
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: (width <= 550) ? 18 : 22,
+                                fontSize: width <= 550 ? 18 : 22,
                               ),
                             ),
                             child: Text(
@@ -284,11 +270,11 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                               shape: const CircleBorder(),
                               elevation: 0,
                               padding: EdgeInsets.symmetric(
-                                horizontal: SizeConfig.blockH! * 6,
-                                vertical: SizeConfig.blockV! * 2.5,
+                                horizontal: width * 0.06,
+                                vertical: height * 0.03,
                               ),
                               textStyle: TextStyle(
-                                fontSize: (width <= 550) ? 13 : 17,
+                                fontSize: width <= 550 ? 13 : 17,
                               ),
                             ),
                             child: const Icon(
