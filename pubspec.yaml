@@ -41,6 +41,7 @@ dependencies:
   unicons: ^2.1.0
   math_expressions: ^2.5.0
   device_preview: ^1.2.0
+  font_awesome_flutter: ^9.1.0
 
 
 dev_dependencies:
