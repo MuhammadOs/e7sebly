@@ -1,3 +1,4 @@
+import 'package:e7sebly/core/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:e7sebly/features/bmi/presentation/view/bmiScreen.dart';
 import 'package:e7sebly/features/calculator/presentation/view/Calculator.dart';
@@ -22,180 +23,185 @@ class _HomePageState extends State<HomePage> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     final double spacing = screenWidth * 0.06;
-    final double spacingPadding = screenWidth * 0.05;// 5% of screen width for spacing
+    final double spacingPadding =
+        screenWidth * 0.05; // 5% of screen width for spacing
 
     return Scaffold(
       backgroundColor: const Color(0XFF1D6BDD),
       body: Padding(
         padding: EdgeInsets.only(right: spacingPadding, left: spacingPadding),
-          child: SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          'أهلاً يا يوسف',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "mess_bold",
-                            fontSize: 40,
-                          ),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'أهلاً يا ${AppConstants.userName}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontFamily: "mess_bold",
+                          fontSize: 40,
                         ),
-                        Text(
-                          'هنحسب إيه النهاردة',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "mess_medium",
-                            letterSpacing: 1,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Qrcode()),
-                      );
-                    });
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25.0),
-                      color: blue2,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 12, bottom: 12),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Image.asset(
-                            'assets/img/icons/barcode.png',
-                            width: 100,
-                          ),
-                          const Text(
-                            'الماسح الضوئي',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "mess_regular",
-                              fontSize: 24,
-                            ),
-                          ),
-                        ],
                       ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  'خدماتنا',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: "mess_bold",
-                    fontSize: 28,
-                  ),
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                Column(
-                  children: [
-                    Row(
-
-                      children: [
-                        buildServiceCard(
-                          context,
-                          'assets/img/icons/ramadan.png',
-                          'التسبيح والأذكار',
-                          blue2,
-                              () {
-                            setState(() {
-                              Navigator.pushReplacementNamed(context, "azkar");
-                            });
-                          },
+                      const Text(
+                        'هنحسب إيه النهاردة',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "mess_medium",
+                          letterSpacing: 1,
+                          fontSize: 18,
                         ),
-                        SizedBox(width: spacing),
-                        buildServiceCard(
-                          context,
-                          'assets/img/icons/gpa.png',
-                          'المعدل التراكمي',
-                          blue2,
-                              () {
-                            setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const GPA()),
-                              );
-                            });
-                          },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Qrcode()),
+                    );
+                  });
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25.0),
+                    color: blue2,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 12, bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.asset(
+                          'assets/img/icons/barcode.png',
+                          width: 100,
+                        ),
+                        const Text(
+                          'الماسح الضوئي',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: "mess_regular",
+                            fontSize: 24,
+                          ),
                         ),
                       ],
                     ),
-                    SizedBox(height: spacing), // Dynamic spacing
-                    Row(
-                      children: [
-                        buildServiceCard(
-                          context,
-                          'assets/img/icons/budget.png',
-                          'اله حاسبة',
-                          blue2,
-                              () {
-                            setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const Calculator()),
-                              );
-                            });
-                          },
-                        ),
-                        SizedBox(width: spacing),
-                        buildServiceCard(
-                          context,
-                          'assets/img/icons/body-mass-index.png',
-                          'كتلة الجسم',
-                          blue2,
-                              () {
-                            setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const BmiScreen()),
-                              );
-                            });
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                'خدماتنا',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: "mess_bold",
+                  fontSize: 28,
+                ),
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      buildServiceCard(
+                        context,
+                        'assets/img/icons/ramadan.png',
+                        'التسبيح والأذكار',
+                        blue2,
+                        () {
+                          setState(() {
+                            Navigator.pushReplacementNamed(context, "azkar");
+                          });
+                        },
+                      ),
+                      SizedBox(width: spacing),
+                      buildServiceCard(
+                        context,
+                        'assets/img/icons/gpa.png',
+                        'المعدل التراكمي',
+                        blue2,
+                        () {
+                          setState(() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const GPA()),
+                            );
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: spacing), // Dynamic spacing
+                  Row(
+                    children: [
+                      buildServiceCard(
+                        context,
+                        'assets/img/icons/budget.png',
+                        'اله حاسبة',
+                        blue2,
+                        () {
+                          setState(() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Calculator()),
+                            );
+                          });
+                        },
+                      ),
+                      SizedBox(width: spacing),
+                      buildServiceCard(
+                        context,
+                        'assets/img/icons/body-mass-index.png',
+                        'كتلة الجسم',
+                        blue2,
+                        () {
+                          setState(() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const BmiScreen()),
+                            );
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
+        ),
       ),
     );
   }
 
-  Widget buildServiceCard(BuildContext context, String imagePath, String label, Color color, VoidCallback onTap) {
+  Widget buildServiceCard(BuildContext context, String imagePath, String label,
+      Color color, VoidCallback onTap) {
     final screenWidth = MediaQuery.of(context).size.width;
     final double spacing = screenWidth * 0.06;
-    final double spacingPadding = screenWidth * 0.05;// 5% of screen width for spacing
+    final double spacingPadding =
+        screenWidth * 0.05; // 5% of screen width for spacing
     return SizedBox(
-      height: screenWidth-(((spacingPadding*2)*6)-(spacing/3)),
-      width: screenWidth-(((spacingPadding*2)*6)-(spacing/3)),
+      height: screenWidth - (((spacingPadding * 2) * 6) - (spacing / 3)),
+      width: screenWidth - (((spacingPadding * 2) * 6) - (spacing / 3)),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
