@@ -31,9 +31,9 @@ class _BmiScreenState extends State<BmiScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
-
+    SizeConfig().init(context);
+    double screenWidth = SizeConfig.screenW!;
+    double screenHeight = SizeConfig.screenH!;
     return Scaffold(
       backgroundColor: const Color(0XFF1D6BDD),
       appBar: AppBar(
@@ -91,8 +91,7 @@ class _BmiScreenState extends State<BmiScreen> {
                             style: TextStyle(
                                 fontSize: screenWidth * 0.06,
                                 color: Colors.white,
-                                fontFamily: 'mess_regular'
-                            ),
+                                fontFamily: 'mess_regular'),
                           ),
                         ],
                       ),
@@ -123,8 +122,7 @@ class _BmiScreenState extends State<BmiScreen> {
                             style: TextStyle(
                                 fontSize: screenWidth * 0.06,
                                 color: Colors.white,
-                                fontFamily: 'mess_regular'
-                            ),
+                                fontFamily: 'mess_regular'),
                           ),
                         ],
                       ),
@@ -145,8 +143,7 @@ class _BmiScreenState extends State<BmiScreen> {
                     'الطول',
                     style: klabelTextStyle.copyWith(
                         fontSize: screenWidth * 0.06,
-                        fontFamily: 'mess_regular'
-                    ),
+                        fontFamily: 'mess_regular'),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -158,8 +155,7 @@ class _BmiScreenState extends State<BmiScreen> {
                         style: kDigitTextStyle.copyWith(
                             fontSize: screenWidth * 0.1,
                             fontFamily: 'mont_bold',
-                            color: Colors.white
-                        ),
+                            color: Colors.white),
                       ),
                       Text(
                         'cm',
@@ -176,12 +172,12 @@ class _BmiScreenState extends State<BmiScreen> {
                       data: SliderTheme.of(context).copyWith(
                         activeTrackColor: dark,
                         inactiveTrackColor: ksliderInactiveColor,
-                        thumbColor:dark,
+                        thumbColor: dark,
                         overlayColor: Color(0x29FAB400),
                         thumbShape:
-                        RoundSliderThumbShape(enabledThumbRadius: 10.0),
+                            RoundSliderThumbShape(enabledThumbRadius: 10.0),
                         overlayShape:
-                        RoundSliderOverlayShape(overlayRadius: 15.0),
+                            RoundSliderOverlayShape(overlayRadius: 15.0),
                       ),
                       child: Slider(
                         value: height.toDouble(),
@@ -213,8 +209,7 @@ class _BmiScreenState extends State<BmiScreen> {
                           'الوزن',
                           style: klabelTextStyle.copyWith(
                               fontSize: screenWidth * 0.06,
-                              fontFamily: 'mess_regular'
-                          ),
+                              fontFamily: 'mess_regular'),
                         ),
                         Text(
                           weight.toString(),
@@ -262,8 +257,7 @@ class _BmiScreenState extends State<BmiScreen> {
                           'السن',
                           style: klabelTextStyle.copyWith(
                               fontSize: screenWidth * 0.06,
-                              fontFamily: 'mess_regular'
-                          ),
+                              fontFamily: 'mess_regular'),
                         ),
                         Text(
                           age.toString(),
