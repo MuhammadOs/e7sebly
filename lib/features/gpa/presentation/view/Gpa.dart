@@ -64,6 +64,7 @@ class _GPAState extends State<GPA> {
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
+            AppConstants.courses.clear();
           },
           icon: Icon(
             Icons.arrow_back_ios_new_rounded,
