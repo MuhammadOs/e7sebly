@@ -1,3 +1,4 @@
+import 'package:e7sebly/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/util/sizeConfig.dart';
@@ -302,24 +303,7 @@ class _BmiScreenState extends State<BmiScreen> {
               ],
             ),
           ),
-          BottomContainer(
-            text: '!يلا إحسبلي',
-            onTap: () {
-              Calculate calc = Calculate(height: height, weight: weight);
-
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ResultPage(
-                    bmi: calc.result(),
-                    resultText: calc.getText(),
-                    advise: calc.getAdvise(),
-                    textColor: calc.getTextColor(),
-                  ),
-                ),
-              );
-            },
-          ),
+          CustomButton(),
         ],
       ),
     );

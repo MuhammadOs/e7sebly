@@ -1,3 +1,4 @@
+import 'package:e7sebly/features/azkar/presentation/view/azkar.dart';
 import 'package:flutter/material.dart';
 import 'package:e7sebly/features/bmi/presentation/view/bmiScreen.dart';
 import 'package:e7sebly/features/calculator/presentation/view/Calculator.dart';
@@ -21,8 +22,8 @@ class _HomePageState extends State<HomePage> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    final double spacing = screenWidth * 0.06;
-    final double spacingPadding = screenWidth * 0.05;// 5% of screen width for spacing
+    final double spacing = screenWidth * 0.04;
+    final double spacingPadding = screenWidth * 0.06;// 5% of screen width for spacing
 
     return Scaffold(
       backgroundColor: const Color(0XFF1D6BDD),
@@ -125,7 +126,10 @@ class _HomePageState extends State<HomePage> {
                           blue2,
                               () {
                             setState(() {
-                              Navigator.pushReplacementNamed(context, "azkar");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const Azkarpage()),
+                              );
                             });
                           },
                         ),
@@ -208,7 +212,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Image.asset(
                 imagePath,
-                width: 90,
+                width: 87,
                 filterQuality: FilterQuality.high,
               ),
               Text(
@@ -216,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                 style: const TextStyle(
                   color: Colors.white,
                   fontFamily: "mess_regular",
-                  fontSize: 18,
+                  fontSize: 17,
                 ),
               ),
             ],
