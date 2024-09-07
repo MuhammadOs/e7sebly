@@ -90,29 +90,29 @@ class CalculatorState extends State<Calculator> {
           children: buttonNames.map<Widget>((e) {
             switch (e) {
               case "+": // Addition Button
-                return _buildFancyButton(e, isBottom: true);
+                return _button(e,0,true);
               case "×": // Multiplication Button
-                return _buildFancyButton(e);
+                return _button(e,0,true);
               case "−": // Subtraction Button
-                return _buildFancyButton(e);
+                return _button(e,0,true);
               case "÷": // Division Button
-                return _buildFancyButton(e, isTop: true);
+                return _button(e,0,true);
               default:
-                return _button(e, 0);
+                return _button(e, 0,false);
             }
           }).toList()),
     );
   }
 
   // Normal button
-  Widget _button(text, double paddingBot) {
+  Widget _button(text, double paddingBot,bool isOperator) {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Material(
         borderRadius: const BorderRadius.all(Radius.circular(100)), // Circular
         color: blue2,
         child: CircleAvatar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: isOperator?dark:Colors.transparent,
           child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
                 return InkWell(
@@ -142,37 +142,6 @@ class CalculatorState extends State<Calculator> {
     );
   }
 
-  // Operator Button
-  Widget _buildFancyButton(text, {bool isTop = false, bool isBottom = false}) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(8, isTop ? 8 : 0, 8, isBottom ? 8 : 0),
-      child: Material(
-        color: dark,
-        borderRadius: BorderRadius.vertical(
-            top: isTop ? const Radius.circular(100.0) : const Radius.circular(0),
-            bottom: isBottom ? const Radius.circular(100.0) : const Radius.circular(0)),
-        child: InkWell(
-          borderRadius: BorderRadius.vertical(
-              top: isTop ? const Radius.circular(100.0) : const Radius.circular(0),
-              bottom: isBottom ? const Radius.circular(100.0) : const Radius.circular(0)),
-          onTap: () {
-            _buttonPressed(text);
-          },
-          child: Center(
-            child: Text(
-              text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 45.0,
-                fontFamily: "mont_bold",
-
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -284,7 +253,7 @@ class CalculatorState extends State<Calculator> {
                     child: Container(
                       alignment: Alignment.topLeft,
                       child: Container(
-                        padding: const EdgeInsets.all(28),
+                        padding: const EdgeInsets.all(25),
                         child: Text(
                           result,
                           style: TextStyle(
