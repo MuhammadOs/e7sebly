@@ -25,11 +25,11 @@ class _GPAState extends State<GPA> {
     double totalPoints = 0;
     int totalCreditHours = 0;
 
-    AppConstants.courses.forEach((subject) {
+    for (var subject in AppConstants.courses) {
       double gradePoint = _gradeToPoints(subject.grade);
       totalPoints += gradePoint * subject.creditHours;
       totalCreditHours += subject.creditHours;
-    });
+    }
 
     return totalPoints / totalCreditHours;
   }
