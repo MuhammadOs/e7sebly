@@ -1,8 +1,8 @@
 import 'package:e7sebly/core/util/sizeConfig.dart';
-import 'package:e7sebly/core/widgets/custom_button.dart';
 import 'package:e7sebly/features/bmi/presentation/Components/Reusable_Bg.dart';
 import 'package:e7sebly/features/bmi/presentation/components/RoundIcon_Button.dart';
 import 'package:e7sebly/features/bmi/presentation/components/constants.dart';
+import 'package:e7sebly/features/bmi/presentation/components/custom_bmi_calculate_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
