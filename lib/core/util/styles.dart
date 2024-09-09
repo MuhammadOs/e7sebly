@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+
 Color backgroundColor = const Color(0XFF1D6BDD);
 Color foregroundColor = const Color(0XFF2585EC);
 Color seconderyColor = const Color(0XFFFAB301);
 Color darkText = const Color(0XFF0D0E22);
 Color lightText = Colors.white;
-
+Color primaryColor = const Color(0XFF2585EC);
 TextStyle headingTextStyleDark =
 TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: darkText,fontFamily: 'mess_bold');
 

@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:e7sebly/features/bmi/presentation/components/BottomContainer_Button.dart';
+import 'package:e7sebly/features/bmi/presentation/components/Reusable_Bg.dart';
+import 'package:e7sebly/features/bmi/presentation/components/constants.dart';
 import 'package:flutter/material.dart';
-import '../Components/Reusable_Bg.dart';
-import '../components/BottomContainer_Button.dart';
-import '../components/constants.dart';
 
-class ResultPage extends StatelessWidget {
+class BmiResultPage extends StatelessWidget {
   final String resultText;
   final String bmi;
   final String advise;
@@ -14,15 +13,14 @@ class ResultPage extends StatelessWidget {
   Color blue2 = const Color(0xFF2B91F7);
   Color dark = const Color(0xFFFAB400);
 
-  ResultPage(
+  BmiResultPage(
       {required this.textColor,
-        required this.resultText,
-        required this.bmi,
-        required this.advise});
+      required this.resultText,
+      required this.bmi,
+      required this.advise});
 
   @override
   Widget build(BuildContext context) {
-
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
@@ -81,11 +79,10 @@ class ResultPage extends StatelessWidget {
                   Text(
                     resultText,
                     style: TextStyle(
-                      color: textColor,
-                      fontSize: 35.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'mess_bold'
-                    ),
+                        color: textColor,
+                        fontSize: 35.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'mess_bold'),
                   ),
                   Text(
                     bmi,
@@ -119,7 +116,6 @@ class ResultPage extends StatelessWidget {
                       fontFamily: 'mess_bold',
                       fontSize: screenWidth * 0.05,
                       color: Colors.white,
-
                     ),
                   ),
                 ],
@@ -127,10 +123,13 @@ class ResultPage extends StatelessWidget {
             ),
           ),
           BottomContainer(
-              text: 'إحسبلي مره كمان',
-              onTap: () {
-                Navigator.pop(context);
-              }),
+            text: 'إحسبلي مره كمان',
+            onTap: () {
+              Navigator.pop(context);
+            },
+            height: 60,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+          ),
         ],
       ),
     );

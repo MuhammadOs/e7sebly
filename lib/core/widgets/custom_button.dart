@@ -1,8 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'package:e7sebly/features/bmi/presentation/components/calculator_brain.dart';
 import 'package:flutter/material.dart';
+import 'package:e7sebly/features/bmi/presentation/view/bmiScreenResult.dart';
 
-class CustomButton extends StatelessWidget {
-  CustomButton({super.key});
+class CustomBmiButton extends StatelessWidget {
+  final int height;
+  final int weight;
+
+  const CustomBmiButton({super.key, required this.height, required this.weight});
 
   @override
   Widget build(BuildContext context) {
@@ -10,25 +14,29 @@ class CustomButton extends StatelessWidget {
     final double width = screenSize.width;
     final double height = screenSize.height;
     final double spacing = width * 0.04;
-    final double spacingPadding = width * 0.3;// 5% of screen width for spacing
+    final double spacingPadding = width * 0.3;
+
     return Padding(
-      padding: EdgeInsets.symmetric( horizontal: spacingPadding ,vertical: spacing),
+      padding: EdgeInsets.symmetric(horizontal: spacingPadding, vertical: spacing),
       child: ElevatedButton(
         onPressed: () {
-          showModalBottomSheet<dynamic>(
-            isScrollControlled: true,
-            backgroundColor: const Color(0xFFFAB400),
-            context: context,
-            builder: (context) => Container(
-              height: height * 0.4,
-              decoration: const BoxDecoration(
-                color: const Color(0xFFFAB400),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(0.0),
-                  topRight: Radius.circular(0.0),
-                ),
-              ),
+          // Calculate BMI and related values
+          Calculate calc = Calculate(height: this.height, weight: this.weight);
+          String bmi = calc.result();
+          String resultText = calc.getText();
+          String advise = calc.getAdvise();
+          Color textColor = calc.getTextColor();
 
+          // Navigate to the result page
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => BmiResultPage(
+                textColor: textColor,
+                resultText: resultText,
+                bmi: bmi,
+                advise: advise,
+              ),
             ),
           );
         },
@@ -53,7 +61,6 @@ class CustomButton extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-
       ),
     );
   }

@@ -1,21 +1,15 @@
-import 'package:flutter/cupertino.dart';
+import 'package:e7sebly/core/util/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import '../../../../core/util/sizeConfig.dart';
-import '../../../bmi/presentation/view/bmiScreen.dart';
-import '../../../calculator/presentation/view/Calculator.dart';
-import '../../../gpa/presentation/view/Gpa.dart';
-import '../../../qrcode/presentation/view/QrCode.dart';
-
-class Azkarpage extends StatefulWidget {
-  const Azkarpage({Key? key}) : super(key: key);
+class AzkarPage extends StatefulWidget {
+  const AzkarPage({Key? key}) : super(key: key);
 
   @override
-  State<Azkarpage> createState() => _AzkarpageState();
+  State<AzkarPage> createState() => _AzkarPageState();
 }
 
-class _AzkarpageState extends State<Azkarpage> {
+class _AzkarPageState extends State<AzkarPage> {
   Color blue = const Color(0xFF1e6bdd);
   Color blue2 = const Color(0xFF2787ee);
   Color dark = const Color(0xFFFAB400);
@@ -99,10 +93,7 @@ class _AzkarpageState extends State<Azkarpage> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Qrcode()),
-                    );
+                    // Navigator.pushNamed(context, Routes.qrCode);
                   });
                 },
                 child: Container(
@@ -150,10 +141,6 @@ class _AzkarpageState extends State<Azkarpage> {
                         blue2,
                             () {
                           setState(() {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const GPA()),
-                            );
                           });
                         },
                       ),
@@ -165,10 +152,6 @@ class _AzkarpageState extends State<Azkarpage> {
                         blue2,
                             () {
                           setState(() {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const Azkarpage()),
-                            );
                           });
                         },
                       ),
@@ -236,10 +219,6 @@ class _AzkarpageState extends State<Azkarpage> {
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const Qrcode()),
-                          );
                         });
                       },
                       child: const Text(
@@ -273,10 +252,6 @@ class _AzkarpageState extends State<Azkarpage> {
                           blue2,
                               () {
                             setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const GPA()),
-                              );
                             });
                           },
                         ),
@@ -291,10 +266,6 @@ class _AzkarpageState extends State<Azkarpage> {
                           blue2,
                               () {
                             setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const GPA()),
-                              );
                             });
                           },
                         ),
@@ -309,10 +280,7 @@ class _AzkarpageState extends State<Azkarpage> {
                           blue2,
                               () {
                             setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const GPA()),
-                              );
+
                             });
                           },
                         ),
@@ -327,10 +295,7 @@ class _AzkarpageState extends State<Azkarpage> {
                           blue2,
                               () {
                             setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const GPA()),
-                              );
+
                             });
                           },
                         ),
@@ -345,10 +310,7 @@ class _AzkarpageState extends State<Azkarpage> {
                           blue2,
                               () {
                             setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const GPA()),
-                              );
+
                             });
                           },
                         ),
@@ -363,10 +325,7 @@ class _AzkarpageState extends State<Azkarpage> {
                           blue2,
                               () {
                             setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const GPA()),
-                              );
+
                             });
                           },
                         ),
@@ -381,10 +340,7 @@ class _AzkarpageState extends State<Azkarpage> {
                           blue2,
                               () {
                             setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const GPA()),
-                              );
+
                             });
                           },
                         ),
@@ -399,10 +355,7 @@ class _AzkarpageState extends State<Azkarpage> {
                           blue2,
                               () {
                             setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const GPA()),
-                              );
+
                             });
                           },
                         ),
@@ -417,10 +370,7 @@ class _AzkarpageState extends State<Azkarpage> {
                           blue2,
                               () {
                             setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const GPA()),
-                              );
+
                             });
                           },
                         ),

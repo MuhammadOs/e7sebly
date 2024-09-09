@@ -1,3 +1,5 @@
+import 'package:e7sebly/core/routing/routes.dart';
+import 'package:e7sebly/core/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:e7sebly/features/bmi/presentation/view/bmiScreen.dart';
 import 'package:e7sebly/features/calculator/presentation/view/Calculator.dart';
@@ -66,10 +68,7 @@ class _HomePageState extends State<HomePage> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Qrcode()),
-                    );
+                    Navigator.pushNamed(context, Routes.qrCode);
                   });
                 },
                 child: Container(
@@ -124,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                         blue2,
                         () {
                           setState(() {
-                            Navigator.pushReplacementNamed(context, "azkar");
+                            Navigator.pushNamed(context, Routes.azkar);
                           });
                         },
                       ),
@@ -136,11 +135,7 @@ class _HomePageState extends State<HomePage> {
                         blue2,
                         () {
                           setState(() {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const GPA()),
-                            );
+                            Navigator.pushNamed(context, Routes.gpa);
                           });
                         },
                       ),
@@ -156,11 +151,7 @@ class _HomePageState extends State<HomePage> {
                         blue2,
                         () {
                           setState(() {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Calculator()),
-                            );
+                            Navigator.pushNamed(context, Routes.calculator);
                           });
                         },
                       ),
@@ -172,11 +163,7 @@ class _HomePageState extends State<HomePage> {
                         blue2,
                         () {
                           setState(() {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const BmiScreen()),
-                            );
+                            Navigator.pushNamed(context, Routes.bmi);
                           });
                         },
                       ),

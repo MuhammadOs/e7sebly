@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:e7sebly/features/onboarding%20screen/presentation/view/onBoardingScreen.dart';
+import 'package:e7sebly/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -28,10 +28,11 @@ class StartState extends State<SplashScreen> {
   }
 
   route() {
-    Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) => const OnboardingScreens()
-    )
-    );
+    Navigator.pushNamed(context, Routes.onBoardingScreen);
+    // Navigator.pushReplacement(context, MaterialPageRoute(
+    //     builder: (context) => const OnboardingScreens()
+    // )
+    // );
   }
 
   initScreen(BuildContext context) {

@@ -1,13 +1,10 @@
+import 'package:e7sebly/core/util/sizeConfig.dart';
 import 'package:e7sebly/core/widgets/custom_button.dart';
+import 'package:e7sebly/features/bmi/presentation/Components/Reusable_Bg.dart';
+import 'package:e7sebly/features/bmi/presentation/components/RoundIcon_Button.dart';
+import 'package:e7sebly/features/bmi/presentation/components/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../../core/util/sizeConfig.dart';
-import '../Components/Reusable_Bg.dart';
-import '../components/BottomContainer_Button.dart';
-import '../components/RoundIcon_Button.dart';
-import '../components/calculator_brain.dart';
-import '../components/constants.dart';
-import 'bmiScreenResult.dart';
 
 class BmiScreen extends StatefulWidget {
   const BmiScreen({Key? key}) : super(key: key);
@@ -297,7 +294,10 @@ class _BmiScreenState extends State<BmiScreen> {
               ],
             ),
           ),
-          CustomButton(),
+          CustomBmiButton(
+            height: height,
+            weight: weight,
+          ),
         ],
       ),
     );

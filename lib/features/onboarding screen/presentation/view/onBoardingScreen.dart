@@ -1,3 +1,4 @@
+import 'package:e7sebly/core/routing/routes.dart';
 import 'package:e7sebly/core/util/constants.dart';
 import 'package:e7sebly/core/util/styles.dart';
 import 'package:e7sebly/core/util/sizeConfig.dart';
@@ -202,8 +203,7 @@ class _OnboardingScreenState extends State<OnboardingScreens> {
                                           ),
                                           ElevatedButton(
                                             onPressed: () {
-                                              Navigator.pushReplacementNamed(
-                                                  context, 'main');
+                                              Navigator.pushReplacementNamed(context, Routes.home);
                                             },
                                             style: ElevatedButton.styleFrom(
                                               backgroundColor:
