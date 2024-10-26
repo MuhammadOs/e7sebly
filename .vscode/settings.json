@@ -2,5 +2,9 @@
     "cSpell.words": [
         "screenutil",
         "sebly"
-    ]
+    ],
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    }
 }

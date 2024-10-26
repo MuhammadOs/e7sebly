@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:wifi_configuration_2/wifi_configuration_2.dart';
+import 'package:wifi_iot/wifi_iot.dart';
 
 class Qrcode extends StatefulWidget {
   const Qrcode({super.key});
@@ -339,17 +339,24 @@ class _QrcodeState extends State<Qrcode> {
         }
       }
 
-      final wifiConfiguration = WifiConfiguration();
-
-      await wifiConfiguration.connectToWifi(
+      // Use wifi_iot package to connect to Wi-Fi
+      final isConnected = await WiFiForIoTPlugin.connect(
         ssid,
-        password,
-        encryption,
+        password: password,
+        security: NetworkSecurity.WPA,
+        joinOnce: true,
+        withInternet: true,
       );
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Connected to Wi-Fi: $ssid')),
-      );
+      if (isConnected) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Connected to Wi-Fi: $ssid')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to connect to Wi-Fi: $ssid')),
+        );
+      }
     } catch (e) {
       if (kDebugMode) {
         print('Exception occurred while connecting to Wi-Fi: $e');
@@ -365,4 +372,5 @@ class _QrcodeState extends State<Qrcode> {
       });
     }
   }
+
 }

@@ -49,8 +49,9 @@ dependencies:
   url_launcher: ^6.3.0
   qr_code_scanner: ^1.0.1
   permission_handler: ^10.2.0
-  wifi_configuration_2: ^1.0.3
+  wifi_iot: ^0.3.19+1
   flutter_screenutil: ^5.9.3
+  smooth_page_indicator: ^1.2.0+3
 
 dev_dependencies:
   flutter_test:
