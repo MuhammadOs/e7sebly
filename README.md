@@ -1,6 +1,13 @@
 # e7sebly
 
-A new Flutter project.
+e7sebly is a versatile Flutter application designed to simplify daily tasks and enhance productivity. Its key features include:
+
+QR Scanner: Easily scan and handle QR codes for various data types (URLs, emails, phone numbers, etc.).
+Azkar Module: Access daily Azkar, a Tasbeeh counter, and a Qibla direction finder for spiritual needs.
+BMI Calculator: Calculate and track your Body Mass Index for health monitoring.
+Calculator: A user-friendly basic calculator for quick arithmetic operations.
+GPA Calculator: Compute GPA effortlessly, tailored for students.
+It’s an all-in-one app offering both practicality and convenience.
 
 ## Getting Started
 
